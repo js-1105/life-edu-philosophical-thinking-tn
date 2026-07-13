@@ -1409,8 +1409,25 @@ function showToast(msg, ms = 2500) {
 }
 
 /* ===== 鍵盤捷徑 ===== */
+// ===== Space 鍵：滑鼠在影音框(.video-wrap/.vframe)內＝播放/暫停該片、不翻頁；框外＝維持翻頁（六單元通用）=====
+let __spaceMx = 0, __spaceMy = 0;
+document.addEventListener('mousemove', e => { __spaceMx = e.clientX; __spaceMy = e.clientY; }, { passive: true });
+function toggleVideoInFocus() {
+  const el = document.elementFromPoint(__spaceMx, __spaceMy);
+  const vc = el && el.closest ? el.closest('.video-wrap,.vframe') : null;
+  if (!vc) return false; // 不在影音框內，回傳 false 讓呼叫端執行 nextSlide()
+  const vid = vc.querySelector('video');
+  if (vid) { if (vid.paused) vid.play(); else vid.pause(); return true; }
+  const yt = vc._ytPlayer;
+  if (yt && typeof yt.getPlayerState === 'function') {
+    try { const state = yt.getPlayerState(); if (state === 1) yt.pauseVideo(); else yt.playVideo(); } catch (_) {}
+    return true;
+  }
+  return true; // 在影音框內但無 API（純 iframe），仍阻止跳頁，不強行 nextSlide
+}
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+  if (e.key === ' ') { e.preventDefault(); if (!toggleVideoInFocus()) nextSlide(); }
   if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
   if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
   if (e.key === 'Escape' && isFs()) (getFsExitFn() || (() => {})).call(document);
@@ -1488,6 +1505,7 @@ if (location.hash) {
       videoId: '_SsccRkLLzU', host: 'https://www.youtube-nocookie.com',
       playerVars: { rel: 0, modestbranding: 1, fs: 0 },
       events: { onReady: function (e) {
+        try { var __vw = e.target.getIframe().closest('.video-wrap,.vframe'); if (__vw) __vw._ytPlayer = e.target; } catch (_) {}
         setInterval(function () { try {
           var st = e.target.getPlayerState();
           if (st === 1 || st === 2) ccShow(e.target.getCurrentTime());
@@ -1653,6 +1671,7 @@ if (location.hash) {
       videoId: 'Zh3Yz3PiXZw', host: 'https://www.youtube-nocookie.com',
       playerVars: { rel: 0, modestbranding: 1, fs: 0 },
       events: { onReady: function (e) {
+        try { var __vw = e.target.getIframe().closest('.video-wrap,.vframe'); if (__vw) __vw._ytPlayer = e.target; } catch (_) {}
         setInterval(function () { try {
           var st = e.target.getPlayerState();
           if (st === 1 || st === 2) ccShow(e.target.getCurrentTime());
