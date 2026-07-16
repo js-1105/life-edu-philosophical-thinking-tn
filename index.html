@@ -274,6 +274,15 @@ body.has-vzoom #vzoomBackdrop { position: fixed; inset: 0; background: rgba(0,0,
   transition: transform .2s, box-shadow .2s;
 }
 .cover-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(134,38,51,0.30); }
+.cover-cta.ghost {
+  margin-top: 1em; background: transparent; color: var(--accent);
+  border: 1px solid rgba(134,38,51,0.42);
+  padding: .6em 1.7em; font-size: 1rem; letter-spacing: .18em; box-shadow: none;
+}
+.cover-cta.ghost:hover {
+  transform: translateY(-2px); background: rgba(134,38,51,0.08);
+  border-color: rgba(134,38,51,0.8); box-shadow: none;
+}
 
 /* 引用來源 */
 ol.references { max-width: 56em; padding-left: 1.4em; }
@@ -343,6 +352,7 @@ body.no-clickzones .click-zones { display: none; }
   <div class="ornament"></div>
   <p class="lead">思考的知識與技能．情意態度．後設思考</p>
   <button class="cover-cta" onclick="startPresentation()">進入全螢幕．開始上課</button>
+  <button class="cover-cta ghost" onclick="goToSlide(slides.length)" title="跳至末頁">↪　跳至末頁</button>
   <div class="meta">孫效智 教授　|　國立臺灣大學生命教育研發育成中心　·　生命教育概論（總整課程）</div>
 </section>
 
