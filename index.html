@@ -334,6 +334,11 @@ body.no-clickzones .click-zones { display: none; }
 @keyframes coverRingSpin{to{transform:rotate(360deg)}}
 .slide.cover.active .cover-sym{animation:coverSymIn 1.7s cubic-bezier(.2,.72,.2,1) both;}
 .slide.cover.active .cover-sym .ring-dash{transform-box:fill-box; transform-origin:100px 100px; animation:coverRingSpin 44s linear infinite;}
+/* S57 立場不必中立：留白偏多，字級整體加大 */
+#s57-stance h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+#s57-stance h3 { font-size: clamp(1.4rem, 2.3vw, 1.85rem); }
+#s57-stance ul.list.tight li { font-size: clamp(1.6rem, 2.15vw, 1.9rem); }
+#s57-stance blockquote { font-size: clamp(1.4rem, 2.2vw, 1.85rem); max-width: 44em; }
 </style>
 </head>
 <body>
@@ -1211,7 +1216,7 @@ body.no-clickzones .click-zones { display: none; }
   <p class="sub" style="position:relative; z-index:1;">工具之外，是一顆願意誠實面對自己、追求真理的心。</p>
 </section>
 
-<section class="slide" data-sec="6">
+<section class="slide" data-sec="6" id="s57-stance">
   <h2>立場不必中立，態度必須公正</h2>
   <div class="two-col top" style="flex:0 1 auto;">
     <div>
