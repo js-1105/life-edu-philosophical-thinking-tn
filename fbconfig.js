@@ -15,4 +15,4 @@ window.FB_CONFIG = {
 };
 
 /* 每次工作坊換一個房號即可「清空重來」（不同房號＝不同資料）。 */
-window.FB_ROOM = "u6-2026-0717";
+window.FB_ROOM = "u6tn-2026-0731";
