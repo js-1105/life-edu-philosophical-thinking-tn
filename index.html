@@ -1492,7 +1492,9 @@ document.addEventListener('keydown', (e) => {
   function esc(s) { return String(s || '').replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
   function makeQRs() {
     if (typeof QRCode === 'undefined') return;
-    const base = location.href.replace(/index\.html.*$|\/?(#.*)?$/, '/');
+    // 🔴 base 必須用 origin+pathname 推導（單元五同法）——location.href 含 ?v= 快取參數時會把
+    //    QR 網址污染成「…/?v=123/submit.html?q=1」，掃出來落在 deck 而非投稿頁（2026-07-31 上課中實爆）。
+    const base = location.origin + location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/');
     document.querySelectorAll('.qr-box[data-q]').forEach(box => {
       const q = box.getAttribute('data-q');
       box.innerHTML = '';
