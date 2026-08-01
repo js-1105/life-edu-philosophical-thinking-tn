@@ -416,13 +416,14 @@ body.no-clickzones .click-zones { display: none; }
 
 <style>
 /* S5 深偽：內容高密頁，壓縮間距與引言字級，避免下緣截切壓到底部控制鈕 */
-#s5-deepfake h2{margin-bottom:.25em;}
-#s5-deepfake p{line-height:1.38;}
-#s5-deepfake h3{margin-top:.2em!important; margin-bottom:.15em;}
-#s5-deepfake ul.list li{padding:.13em 0 .13em 1.3em; line-height:1.26;}
-#s5-deepfake blockquote{font-size:clamp(1.1rem,1.6vw,1.42rem)!important; margin-top:.3em!important; padding:.35em .8em; line-height:1.32;}
-#s5-deepfake .two-col{align-items:flex-start!important;}
-#s5-deepfake .small{margin-top:.12em!important;}
+/* 字級一律用 vh，讓 1512×893 與 864×561 兩種版面完全等比（PLAYBOOK A·〇·22） */
+#s5-deepfake h2{margin-bottom:.45em;}
+#s5-deepfake .two-col{align-items:flex-start!important; gap:3.5vw;}
+#s5-deepfake .two-col p:not(.small){font-size:3.02vh!important; line-height:1.52;}
+#s5-deepfake h3{font-size:3.36vh!important; margin-top:.5em!important; margin-bottom:.3em;}
+#s5-deepfake ul.list li{font-size:2.86vh!important; padding:.34em 0 .34em 1.35em; line-height:1.42;}
+#s5-deepfake .small{font-size:2.55vh!important; margin-top:.35em!important;}
+#s5-deepfake blockquote{font-size:3.02vh!important; margin-top:.9em!important; padding:.55em .95em; line-height:1.45;}
 </style>
 <section class="slide" data-sec="1" id="s5-deepfake">
   <h2>深偽（Deepfake）：連「刷臉」都能偽造</h2>
@@ -437,7 +438,7 @@ body.no-clickzones .click-zones { display: none; }
       <p class="small" style="text-align:center; margin-top:.5em;">華視新聞、聯合報，2026/2（刑事局 2026/2 偵結起訴）</p>
     </div>
     <div>
-      <p>2026 年 2 月，刑事局偵結起訴：台灣的系統商替境外詐團用 AI 深偽合成<span class="gold">被害人的臉</span>，<span class="gold">騙過中國「數字人民幣」App 的刷臉驗證</span>、盜轉存款——<span class="gold">55 名被害人全是中國民眾</span>，財損約新臺幣 2 億元。<b>這起案子裡，台灣是加害端。</b></p>
+      <p>2026 年 2 月，刑事局偵結起訴：台灣的系統商替境外詐團，用<span class="gold">低軌衛星（星鏈）連線＋AI 深偽</span>合成被害人的臉，<span class="gold">騙過中國「數字人民幣」App 的刷臉驗證</span>、盜轉存款——<span class="gold">55 名被害人全是中國民眾</span>，財損約新臺幣 2 億元。<b>這起案子裡，台灣是加害端。</b></p>
       <h3 style="margin-top:.4em;">辨不出來，才更要查證</h3>
       <ul class="list tight">
         <li><span class="gold">別靠肉眼</span>：16 種主流偵測器實測，<span class="gold">沒有一種</span>能可靠辨識真實世界的深偽</li>
